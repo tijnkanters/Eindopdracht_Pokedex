@@ -36,7 +36,7 @@ body {
 /* Portrait layout (default) */
 
 .header {
-    height: 10%;
+    height: 60px;
     color: white !important;
     border: none !important;
     border-bottom: 5px solid black !important;
@@ -105,4 +105,8 @@ h1 {
 
 .ui-btn-left{
     margin: 0.8em !important;
+}
+
+.pokemon-image{
+    width: 100%;
 }
