@@ -5,7 +5,14 @@ function setup() {
 }
 
 $(document).on("swiperight", function () {
-    $.mobile.activePage.find('#menuPanel').panel("open");
+    console.log($.mobile.activePage);
+    if ($.mobile.activePage.is("#pokemonDetail")){
+            $.mobile.navigate("#pokedex", {transition: "fade"});
+    } 
+    else{
+            $.mobile.activePage.find('#menuPanel').panel("open");
+    }
+
 });
 
 $('#pokedexListView').on('click', 'li a.pokemonListItem', loadPokemonDetails);
