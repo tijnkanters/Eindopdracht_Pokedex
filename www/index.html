@@ -30,21 +30,26 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <title>Hello World</title>
+        <title>Pokédex app</title>
     </head>
     <body>
-        <div class="app">
-            <div class="header">
+        <div data-role="page" id="pageone" data-theme="a">
+            <div data-role="panel" id="myPanel"> 
+                <h2>Panel Header..</h2>
+                <p>Some text in the panel..</p>
+            </div> 
+            <div data-role="header">
+                <a href="#myPanel" class="ui-btn ui-btn-inline">Menu</a>
                 <h1>Pokédex</h1>
             </div>
-            <div data-role="main" class="content">
+            <div data-role="main" class="ui-content">
                 <ul data-role="listview" id="compendiumListView">
                 </ul>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/connection.js"></script>
+        <script type="text/javascript" src="js/pokemons.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>

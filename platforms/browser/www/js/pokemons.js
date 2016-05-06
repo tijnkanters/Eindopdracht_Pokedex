@@ -4,12 +4,21 @@ function setup(){
     loadCompendium();
 }
 
+$(document).on('click', '#open_menu', function(){   
+    $.mobile.activePage.find('#menu').panel("open");       
+});
+
+$(document).on("swiperight", function() {
+    $.mobile.activePage.find('#menu').panel("open");    
+});
+
+var total_pokemons = 721;
 var poke_id = 0;
 
 function loadCompendium() {
 	var listContent = '';
 
-	$.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=100', function(data) {
+	$.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function(data) {
 
 		$.each(data.results, function() {
 			poke_id++;
