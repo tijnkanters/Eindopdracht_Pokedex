@@ -4,12 +4,8 @@ function setup() {
     loadCompendium();
 }
 
-$(document).on('click', '#open_menu', function () {
-    $.mobile.activePage.find('#menu').panel("open");
-});
-
 $(document).on("swiperight", function () {
-    $.mobile.activePage.find('#menu').panel("open");
+    $.mobile.activePage.find('#menuPanel').panel("open");
 });
 
 var total_pokemons = 721;
@@ -32,7 +28,7 @@ function loadCompendium() {
 			listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[i].url + '">#' + i + ' ' + pokelist[i].name + '</a></li>';
 		}
 
-
+$('#loading').hide();
 		$('#compendiumListView').html(listContent);
 		$('#compendiumListView').listview("refresh");
 	});
@@ -45,6 +41,7 @@ $(document).ready(function () {
 	win.scroll(function () {
 		// End of the document reached?
 		if ($(document).height() - win.height() == win.scrollTop()) {
+			$('#loading').show();
 			var addNumbers=i+50;
 			for (i; i < addNumbers; i++) {
 				if(i==total_pokemons+1){
@@ -53,6 +50,7 @@ $(document).ready(function () {
 				$('#compendiumListView').append('<li><a href="#" class="pokemonListItem ui-btn ui-btn-icon-right ui-icon-carat-r" rel="' + pokelist[i].url + '">#' + i + ' ' + pokelist[i].name + '</a></li>');
 
 			}
+			$('#loading').hide();
 		}
 	});
 });

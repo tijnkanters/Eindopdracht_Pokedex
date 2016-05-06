@@ -4,12 +4,8 @@ function setup() {
     loadCompendium();
 }
 
-$(document).on('click', '#open_menu', function () {
-    $.mobile.activePage.find('#menu').panel("open");
-});
-
 $(document).on("swiperight", function () {
-    $.mobile.activePage.find('#menu').panel("open");
+    $.mobile.activePage.find('#menuPanel').panel("open");
 });
 
 var total_pokemons = 721;
