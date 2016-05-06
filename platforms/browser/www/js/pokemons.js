@@ -98,7 +98,7 @@ $(document).ready(function() {
             $('#loading').show();
             var addNumbers = poke_id + 50;
             for (poke_id; poke_id < addNumbers; poke_id++) {
-                if (poke_id == total_pokemons + 1) {
+                if (poke_id == total_pokemons) {
                     break;
                 }
                 $('#pokedexListView').append('<li><a href="#" class="pokemonListItem ui-btn ui-btn-icon-right ui-icon-carat-r" rel="' + pokelist[poke_id].url + '">#' + poke_id + ' ' + pokelist[poke_id].name + '</a></li>');
