@@ -14,7 +14,7 @@ $(document).on("swiperight", function () {
 
 var total_pokemons = 721;
 var poke_id = 0;
-var i = 0;
+var i = 1;
 var pokelist = [];
 
 function loadCompendium() {
@@ -28,7 +28,7 @@ function loadCompendium() {
 			pokelist.push(this);
 		});
 		console.log(pokelist);
-		for (i = 0; i < 50; i++) {
+		for (i; i < 51; i++) {
 			listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[i].url + '">#' + i + ' ' + pokelist[i].name + '</a></li>';
 		}
 
@@ -47,10 +47,10 @@ $(document).ready(function () {
 		if ($(document).height() - win.height() == win.scrollTop()) {
 			var addNumbers=i+50;
 			for (i; i < addNumbers; i++) {
-				if(i==total_pokemons){
+				if(i==total_pokemons+1){
 					break;
 				}
-				$('#compendiumListView').append('<li><a href="#" class="pokemonListItem" rel="' + pokelist[i].url + '">#' + i + ' ' + pokelist[i].name + '</a></li>');
+				$('#compendiumListView').append('<li><a href="#" class="pokemonListItem ui-btn ui-btn-icon-right ui-icon-carat-r" rel="' + pokelist[i].url + '">#' + i + ' ' + pokelist[i].name + '</a></li>');
 
 			}
 		}
