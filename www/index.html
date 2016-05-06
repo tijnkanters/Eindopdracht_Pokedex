@@ -42,9 +42,14 @@
 <body>
 
     <div data-role="page" id="pageone" data-theme="a">
-        <div data-role="panel" id="myPanel">
-            <h2>Panel Header..</h2>
-            <p>Some text in the panel..</p>
+        <div data-role="panel" id="myPanel" data-theme="b">
+            <h2>Menu</h2>
+            <ul data-role="listview" data-theme="b">
+                <li><a href="#pokedex" data-transition="slide">Pokédex</a></li>
+                <li><a href="#myPokemon" data-transition="slide"><span id="label_my_pokemon">My Pokémon</span></a></li>
+                <li><a href="#hunt" data-transition="slide"><span id="label_hunt">Hunt</span></a></li>
+                <li><a href="#settings" data-transition="slide"><span id="label_settings">Settings</span></a></li>
+            </ul>
         </div>
         <div data-role="header">
             <a href="#myPanel" class="ui-btn ui-btn-inline">Menu</a>
