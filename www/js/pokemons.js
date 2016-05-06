@@ -37,7 +37,7 @@ function loadPokedex() {
         });
         console.log(pokelist);
         for (poke_id; poke_id < 50; poke_id++) {
-            listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[poke_id].url + '">#' + (poke_id + 1) + ' ' + pokelist[poke_id].name + '</a></li>';
+            listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[poke_id].url + '">#' + (poke_id + 1) + ' ' + capitalizeFirstLetter(pokelist[poke_id].name) + '</a></li>';
         }
 
         $('#loading').hide();
