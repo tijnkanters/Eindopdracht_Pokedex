@@ -4,7 +4,7 @@ function setup() {
     loadPokedex();
 }
 
-$(document).on("swiperight", function() {
+$(document).on("swiperight", function () {
     console.log($.mobile.activePage);
     if ($.mobile.activePage.is("#pokemonDetail")) {
         $.mobile.navigate("#pokedex", { transition: "fade" });
@@ -15,7 +15,7 @@ $(document).on("swiperight", function() {
 
 });
 
-$(document).on("pagehide", function(event) {
+$(document).on("pagehide", function (event) {
     clearDetails();
 });
 
@@ -30,9 +30,9 @@ function loadPokedex() {
 
 
 
-    $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function(data) {
+    $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
 
-        $.each(data.results, function() {
+        $.each(data.results, function () {
             pokelist.push(this);
         });
         console.log(pokelist);
@@ -64,16 +64,39 @@ function loadPokemonDetails() {
 
     $.mobile.navigate("#pokemonDetail", { transition: "slide" });
 
-    $.getJSON(url, function(data) {
+    $.getJSON(url, function (data) {
 
         var pokemonId = formatPokemonId(data.id);
         var pokemonName = capitalizeFirstLetter(data.name);
 
         $('#pokemon_name').html(pokemonName);
+        function loadPokemonDetails() {
+
+            var url = $(this).attr('rel');
+
+            $.mobile.navigate("#pokemonDetail", { transition: "slide" });
+
+            $.getJSON(url, function (data) {
+                var pokemonId = formatPokemonId(data.id);
+                var pokemonName = capitalizeFirstLetter(data.name);
+
+                $('#pokemon_name').html(pokemonName);
+                $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
+
+                var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
+
+
+                $('#image_container').append('<img src="' + imageUrl + '" class="pokemon-image" />');
+
+
+
+
+            });
+        };
 
         var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
 
-        
+
         $('#image_container').append('<img src="' + imageUrl + '" class="pokemon-image" />');
 
 
@@ -83,16 +106,16 @@ function loadPokemonDetails() {
 };
 
 function clearDetails() {
-    
+
     $('#pokemon_name').html("Loading...");
     $('#image_container').empty();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     var win = $(window);
 
     // Each time the user scrolls
-    win.scroll(function() {
+    win.scroll(function () {
         // End of the document reached?
         if ($(document).height() - win.height() == win.scrollTop()) {
             $('#loading').show();
