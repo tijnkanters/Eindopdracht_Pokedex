@@ -100,37 +100,11 @@ function loadPokemonDetails() {
         var pokemonName = capitalizeFirstLetter(data.name);
 
         $('#pokemon_name').html(pokemonName);
-        function loadPokemonDetails() {
-
-            var url = $(this).attr('rel');
-
-            $.mobile.navigate("#pokemonDetail", { transition: "slide" });
-
-            $.getJSON(url, function (data) {
-                var pokemonId = formatPokemonId(data.id);
-                var pokemonName = capitalizeFirstLetter(data.name);
-                debugger;
-                $('#pokemon_name').html(pokemonName);
-                $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
-
-                var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
-
-                $('#image_container').append('<img src="' + imageUrl + '" class="pokemon-image" />');
-
-
-
-
-            });
-        };
+        $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
 
         var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
 
-
         $('#image_container').append('<img src="' + imageUrl + '" class="pokemon-image" />');
-
-
-
-
     });
 };
 
@@ -138,6 +112,7 @@ function clearDetails() {
 
     $('#pokemon_name').html("Loading...");
     $('#image_container').empty();
+    $('#internet_container').empty();
 }
 
 $(document).ready(function () {
