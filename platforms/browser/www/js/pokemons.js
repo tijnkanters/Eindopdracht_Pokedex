@@ -1,8 +1,17 @@
 document.addEventListener("deviceready", setup, false);
+var localStorage = window.localStorage;
+
+Storage.prototype.setArray = function (key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getArray = function (key) {
+    return JSON.parse(this.getItem(key))
+}
 
 function setup() {
     loadPokedex();
 }
+
 
 $(document).on("swiperight", function () {
     console.log($.mobile.activePage);
@@ -24,26 +33,47 @@ $('#pokedexListView').on('click', 'li a.pokemonListItem', loadPokemonDetails);
 var total_pokemons = 721;
 var poke_id = 0;
 var pokelist = [];
+var list = localStorage.getArray("list");
 
 function loadPokedex() {
     var listContent = '';
 
+    if (!list) {
+        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
 
+            $.each(data.results, function () {
+                pokelist.push(this);
+            });
 
-    $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
+            for (poke_id; poke_id < 50; poke_id++) {
+                listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[poke_id].url + '">#' + (poke_id + 1) + ' ' + capitalizeFirstLetter(pokelist[poke_id].name) + '</a></li>';
+            }
 
-        $.each(data.results, function () {
-            pokelist.push(this);
+            debugger;
+            localStorage.setArray("list", pokelist);
+            $('#loading').hide();
+            $('#pokedexListView').html(listContent);
+            $('#pokedexListView').listview("refresh");
         });
-        console.log(pokelist);
-        for (poke_id; poke_id < 50; poke_id++) {
-            listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[poke_id].url + '">#' + (poke_id + 1) + ' ' + capitalizeFirstLetter(pokelist[poke_id].name) + '</a></li>';
-        }
+    } else {
+        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
+            if (data.results.length != list.length) {
+                localStorage.clear();
+                localStorage.setArray("list", data.results);
+                pokelist = data.results;
+            } else {
+                pokelist = list;
+            }
+            for (poke_id; poke_id < 50; poke_id++) {
+                listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[poke_id].url + '">#' + (poke_id + 1) + ' ' + capitalizeFirstLetter(pokelist[poke_id].name) + '</a></li>';
+            }
+            $('#loading').hide();
+            $('#pokedexListView').html(listContent);
+            $('#pokedexListView').listview("refresh");
+        });
 
-        $('#loading').hide();
-        $('#pokedexListView').html(listContent);
-        $('#pokedexListView').listview("refresh");
-    });
+    }
+
 };
 
 function formatPokemonId(id) {
@@ -79,12 +109,11 @@ function loadPokemonDetails() {
             $.getJSON(url, function (data) {
                 var pokemonId = formatPokemonId(data.id);
                 var pokemonName = capitalizeFirstLetter(data.name);
-
+                debugger;
                 $('#pokemon_name').html(pokemonName);
                 $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
 
                 var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
-
 
                 $('#image_container').append('<img src="' + imageUrl + '" class="pokemon-image" />');
 
