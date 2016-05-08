@@ -99,13 +99,15 @@ function capitalizeFirstLetter(string) {
 function loadMyPokemon() {
     var listContent = '';
     var myPokemon = localStorage.getArray("myPokemon");
+    
+    $('#empty').show();
 
     if (myPokemon != null) {
         $('#empty').hide();
         
         var counter = 0;
         for (counter; counter < myPokemon.length; counter++) {
-            listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[counter].url + '">#' + (counter + 1) + ' ' + capitalizeFirstLetter(pokelist[counter].name) + '</a></li>';
+            listContent += '<li><a href="#" class="pokemonListItem" rel="' + myPokemon[counter].url + '">#' + (counter + 1) + ' ' + capitalizeFirstLetter(myPokemon[counter].name) + '</a></li>';
         }
         $('#myPokemonListView').html(listContent);
         $('#myPokemonListView').listview("refresh");
