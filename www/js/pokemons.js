@@ -150,7 +150,7 @@ function loadPokemonDetails(pokemon) {
             for (counter; counter < myPokemon.length; counter++) {
                 if (myPokemon[counter].id == data.id){
                     pokemon = myPokemon[counter];
-                    $('#location_container').html('<a href="geo:' + pokemon.x + ',' + pokemon.y + '">Check catch location</a>');
+                    $('#location_container').html('<a href="http://maps.google.com/maps?daddr="'+ pokemon.x + ',' + pokemon.y + '">Check catch location</a>');
                 }
             }
         }
