@@ -1,3 +1,4 @@
+$('#button_hunt').on('click', getLocation);
 
 var myPlace;
 
