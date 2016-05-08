@@ -47,8 +47,6 @@ function getLocation() {
 }
 
 function hunt() {
-    console.log(myPlace);
-    alert(myPlace.x + " - " + myPlace.y);
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
     for (var i = 0; i < cords.length; i++) {
