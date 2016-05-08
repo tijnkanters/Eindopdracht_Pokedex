@@ -1,8 +1,10 @@
 $('#button_hunt').on('tap', function() {
+    myPlace = null;
     getLocation();
 });
 
 $('#button_hunt2').on('tap', function() {
+    myPlace = null;
     getLocation();
 });
 
@@ -45,11 +47,13 @@ function getLocation() {
 }
 
 function hunt() {
+    console.log(myPlace);
     alert(myPlace.x + " - " + myPlace.y);
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
     for (var i = 0; i < cords.length; i++) {
-        if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y >= cords[i].yt && myPlace.y <= cords[i].yb) {
+        debugger;
+        if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y <= cords[i].yt && myPlace.y >= cords[i].yb) {
             //correct cordinates catch pokemon
 
             var random = Math.floor(Math.random() * total_pokemons) + 1;
