@@ -45,7 +45,6 @@
         <div data-role="panel" id="menuPanel" data-theme="b">
             <h1>Menu</h1>
             <ul data-role="listview" data-theme="b">
-                <li><a href="#pokedex" data-transition="slide">Pokédex</a></li>
                 <li><a href="#myPokemon" data-transition="slide"><span id="label_my_pokemon">My Pokémon</span></a></li>
                 <li><a href="#hunt" data-transition="slide" id="button_hunt"><span id="label_hunt">Hunt</span></a></li>
                 <li><a href="settings.html"><span id="label_settings">Settings</span></a></li>
@@ -76,6 +75,29 @@
             <div id="internet_container"></div>
         </div>
     </div>
+    
+    <div data-role="page" id="myPokemon" data-theme="a">
+        <div data-role="panel" id="menuPanel" data-theme="b">
+            <h1>Menu</h1>
+            <ul data-role="listview" data-theme="b">
+                <li><a href="#pokedex"      data-transition="slide" id="button_pokedex">        <span id="label_pokedex">Pokédex</span></a></li>
+                <li><a href="#hunt"         data-transition="slide" id="button_hunt">           <span id="label_hunt">Hunt</span></a></li>
+                <li><a href="settings.html">                                                    <span id="label_settings">Settings</span></a></li>
+            </ul>
+        </div>
+        <div data-role="header" class="header" data-position="fixed">
+            <a href="#menuPanel" class="ui-btn ui-corner-all">Menu</a>
+            <h1>My Pokémon</h1>
+            <img src="img/button.png" class="button">
+        </div>
+        <div data-role="main" class="ui-content">
+            <ul data-role="listview" id="pokedexListView">
+            </ul>
+            <p> Pokelist hier </p>
+        </div>
+    </div>
+    
+    
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/pokemons.js"></script>
     <script type="text/javascript" src="js/hunt.js"></script>

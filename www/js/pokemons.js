@@ -30,6 +30,11 @@ $(document).on("pagehide", function (event) {
 
 $('#pokedexListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
 
+$('#button_myPokemon').on('tap', function(){
+    console.log("mypokemon");
+    console.log(localStorage.getArray("myPokemon"));
+});
+
 var total_pokemons = 721;
 var poke_id = 0;
 var pokelist = [];
