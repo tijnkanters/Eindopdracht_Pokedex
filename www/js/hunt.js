@@ -36,7 +36,7 @@ var cords = [
     { xt: 51.677419, yt: 5.319756, xb: 51.673370, yb: 5.327322, name: "Petelaarse Schans" },//Petelaarse Schans
     { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233, name: "Grass Company" },//Grass Company
     { xt: 51.633824, yt: 5.409716, xb: 51.632043, yb: 5.413037, name: "Lieseindse Straat" },//Lieseindse Straat
-    { xt: 51.611846, yt: 5.466126, xb: 51.611777, yb: 5.466339, name: "Duinweg" },//Duinweg
+    { xt: 51.613000, yt: 5.468000, xb: 51.610000, yb: 5.465000, name: "Duinweg" },//Duinweg
     { xt: 51.969000, yt: 6.254900, xb: 51.966000, yb: 6.254600, name: "Test" }//test
 ];
 
