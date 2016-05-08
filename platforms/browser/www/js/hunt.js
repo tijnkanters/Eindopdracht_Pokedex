@@ -52,7 +52,7 @@ function hunt() {
     for (var i = 0; i < cords.length; i++) {
         if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y <= cords[i].yt && myPlace.y >= cords[i].yb) {
             //correct cordinates catch pokemon
-
+            navigator.vibrate(1000);
             var random = Math.floor(Math.random() * total_pokemons) + 1;
             var pokemon = pokelist[random];
             pokemon.x = myPlace.x;
@@ -67,7 +67,7 @@ function hunt() {
             myPokemon.push(pokemon);
 
             localStorage.setArray("myPokemon", myPokemon);
-            navigator.vibrate(1000);
+            
             alert("You caught a wild " + pokemon.name + " at " + cords[i].name + "!");//vervangen door iets gui
             found = true;
             loadMyPokemon();
