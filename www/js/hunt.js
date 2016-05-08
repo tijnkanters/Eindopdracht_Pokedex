@@ -42,13 +42,13 @@ function hunt() {
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
     for (var i = 0; i < cords.length; i++) {
-        if (place.x <= cords[i].xt && place.x >= cords[i].xb && place.y >= cords[i].yt && place.y <= cords[i].yb) {
+        if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y >= cords[i].yt && myPlace.y <= cords[i].yb) {
             //correct cordinates catch pokemon
 
             var random = Math.floor(Math.random() * total_pokemons) + 1;
             var pokemon = pokelist[random];
-            pokemon.x=place.x;
-            pokemon.y=place.y;
+            pokemon.x=myPlace.x;
+            pokemon.y=myPlace.y;
             pokemon.caughtAt=cords[i].name;
             var myPokemon = localStorage.getArray("myPokemon");
             if(!myPokemon){
