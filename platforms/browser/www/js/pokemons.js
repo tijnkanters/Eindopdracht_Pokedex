@@ -16,6 +16,10 @@ $(document).on('tap', '#button_menu', function() {
     $.mobile.activePage.find('#menuPanel').panel("open");
 });
 
+$(document).on('tap', '#button_back', function() {
+    $.mobile.back();
+});
+
 $(document).on("swiperight", function() {
     console.log($.mobile.activePage);
     if ($.mobile.activePage.is("#pokemonDetail")) {
