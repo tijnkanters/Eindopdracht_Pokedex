@@ -1,4 +1,6 @@
-$('#button_hunt').on('click', getLocation);
+$('#button_hunt').on('tap', function(){
+    getLocation();
+});
 
 var myPlace;
 
@@ -7,6 +9,7 @@ var myPlace;
 // current GPS coordinates
 //
 var onSuccess = function (position) {
+    alert("success");
     myPlace = { x: position.coords.latitude, y: position.coords.longitude };
     hunt();
 };

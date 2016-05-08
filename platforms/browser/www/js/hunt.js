@@ -1,4 +1,6 @@
-$('#button_hunt').on('click', getLocation);
+$('#button_hunt').on('tap', function(){
+    getLocation();
+});
 
 var myPlace;
 
@@ -7,6 +9,7 @@ var myPlace;
 // current GPS coordinates
 //
 var onSuccess = function (position) {
+    alert("success");
     myPlace = { x: position.coords.latitude, y: position.coords.longitude };
     hunt();
 };
@@ -47,10 +50,17 @@ function hunt() {
 
             var random = Math.floor(Math.random() * total_pokemons) + 1;
             var pokemon = pokelist[random];
-
-            var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + random + ".png";
-
-            alert("A wild " + pokemon.name + " appeared at " + cords[i].name + "!");//vervangen door iets gui
+            pokemon.x=myPlace.x;
+            pokemon.y=myPlace.y;
+            pokemon.caughtAt=cords[i].name;
+            var myPokemon = localStorage.getArray("myPokemon");
+            if(!myPokemon){
+                myPokemon=[];
+            }
+            myPokemon.push(pokemon);
+            
+            localStorage.setArray("myPokemon", myPokemon);
+            alert("You caught a wild " + pokemon.name + " at " + cords[i].name + "!");//vervangen door iets gui
             found = true;
             break;
         }

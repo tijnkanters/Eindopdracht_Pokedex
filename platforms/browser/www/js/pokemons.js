@@ -28,7 +28,7 @@ $(document).on("pagehide", function (event) {
     clearDetails();
 });
 
-$('#pokedexListView').on('click', 'li a.pokemonListItem', loadPokemonDetails);
+$('#pokedexListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
 
 var total_pokemons = 721;
 var poke_id = 0;
