@@ -104,7 +104,7 @@ function loadMyPokemon() {
         
         var counter = 0;
         for (counter; counter < myPokemon.length; counter++) {
-            listContent += '<li><a href="#" class="pokemonListItem" rel="' + myPokemon[counter].url + '">#' + (counter + 1) + ' ' + capitalizeFirstLetter(myPokemon[counter].name) + '</a></li>';
+            listContent += '<li><a href="#" class="pokemonListItem" rel="' + myPokemon[counter].url + '"> ' + capitalizeFirstLetter(myPokemon[counter].name) + ' (' + myPokemon[counter].caughtAt + ')' + '</a></li>';
         }
         $('#myPokemonListView').html(listContent);
         $('#myPokemonListView').listview("refresh");
