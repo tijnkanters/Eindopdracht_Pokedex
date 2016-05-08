@@ -171,23 +171,26 @@ function clearDetails() {
     $('#internet_container').empty();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     var win = $(window);
+    setInterval(function () {
+        win.endlessScroll({
+            inflowPixels: 40,
+            callback: function () {
+                $('#loading').show();
+                var addNumbers = poke_id + 50;
+                for (poke_id; poke_id < addNumbers; poke_id++) {
+                    if (poke_id == total_pokemons) {
+                        $('#loading').hide();
+                        break;
+                    }
+                    $('#pokedexListView').append('<li><a href="#" class="pokemonListItem ui-btn ui-btn-icon-right ui-icon-carat-r" rel="' + pokelist[poke_id].url + '">#' + poke_id + ' ' + pokelist[poke_id].name + '</a></li>');
 
-    // Each time the user scrolls
-    win.scroll(function() {
-        // End of the document reached?
-        if ($(document).height() - win.height() == win.scrollTop()) {
-            $('#loading').show();
-            var addNumbers = poke_id + 50;
-            for (poke_id; poke_id < addNumbers; poke_id++) {
-                if (poke_id == total_pokemons) {
-                    break;
                 }
-                $('#pokedexListView').append('<li><a href="#" class="pokemonListItem ui-btn ui-btn-icon-right ui-icon-carat-r" rel="' + pokelist[poke_id].url + '">#' + poke_id + ' ' + pokelist[poke_id].name + '</a></li>');
-
+                $('#loading').hide();
             }
-            $('#loading').hide();
-        }
-    });
+        });
+    }, 500);
+
+
 });
