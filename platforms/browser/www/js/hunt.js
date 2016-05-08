@@ -1,4 +1,5 @@
 $('#button_hunt').on('tap', function(){
+    myPlace = null;
     getLocation();
 });
 
@@ -39,7 +40,7 @@ function getLocation() {
 }
 
 function hunt() {
-    alert(myPlace);
+    alert(myPlace.x + " - " + myPlace.y);
     console.log(myPlace);
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
