@@ -1,10 +1,10 @@
 document.addEventListener("deviceready", setup, false);
 var localStorage = window.localStorage;
 
-Storage.prototype.setArray = function (key, obj) {
+Storage.prototype.setArray = function(key, obj) {
     return this.setItem(key, JSON.stringify(obj))
 }
-Storage.prototype.getArray = function (key) {
+Storage.prototype.getArray = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
@@ -12,8 +12,11 @@ function setup() {
     loadPokedex();
 }
 
+$(document).on('tap', '#button_menu', function() {
+    $.mobile.activePage.find('#menuPanel').panel("open");
+});
 
-$(document).on("swiperight", function () {
+$(document).on("swiperight", function() {
     console.log($.mobile.activePage);
     if ($.mobile.activePage.is("#pokemonDetail")) {
         $.mobile.navigate("#pokedex", { transition: "fade" });
@@ -24,15 +27,15 @@ $(document).on("swiperight", function () {
 
 });
 
-$(document).on("pagehide", function (event) {
+$(document).on("pagehide", function(event) {
     clearDetails();
 });
 
 $('#pokedexListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
+$('#myPokemonListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
 
-$('#button_myPokemon').on('tap', function(){
-    console.log("mypokemon");
-    console.log(localStorage.getArray("myPokemon"));
+$('#button_myPokemon').on('tap', function() {
+    loadMyPokemon();
 });
 
 var total_pokemons = 721;
@@ -44,9 +47,9 @@ function loadPokedex() {
     var listContent = '';
 
     if (!list) {
-        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
+        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function(data) {
 
-            $.each(data.results, function () {
+            $.each(data.results, function() {
                 pokelist.push(this);
             });
 
@@ -61,7 +64,7 @@ function loadPokedex() {
             $('#pokedexListView').listview("refresh");
         });
     } else {
-        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function (data) {
+        $.getJSON('http://pokeapi.co/api/v2/pokemon/?limit=' + total_pokemons, function(data) {
             if (data.results.length != list.length) {
                 localStorage.clear();
                 localStorage.setArray("list", data.results);
@@ -93,13 +96,31 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function loadMyPokemon() {
+    var listContent = '';
+    var myPokemon = localStorage.getArray("myPokemon");
+
+    if (myPokemon != null) {
+        $('#empty').hide();
+        
+        var counter = 0;
+        for (counter; counter < myPokemon.length; counter++) {
+            listContent += '<li><a href="#" class="pokemonListItem" rel="' + pokelist[counter].url + '">#' + (counter + 1) + ' ' + capitalizeFirstLetter(pokelist[counter].name) + '</a></li>';
+        }
+        $('#myPokemonListView').html(listContent);
+        $('#myPokemonListView').listview("refresh");
+    }
+
+
+}
+
 function loadPokemonDetails() {
 
     var url = $(this).attr('rel');
 
     $.mobile.navigate("#pokemonDetail", { transition: "slide" });
 
-    $.getJSON(url, function (data) {
+    $.getJSON(url, function(data) {
 
         var pokemonId = formatPokemonId(data.id);
         var pokemonName = capitalizeFirstLetter(data.name);
@@ -120,11 +141,11 @@ function clearDetails() {
     $('#internet_container').empty();
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     var win = $(window);
 
     // Each time the user scrolls
-    win.scroll(function () {
+    win.scroll(function() {
         // End of the document reached?
         if ($(document).height() - win.height() == win.scrollTop()) {
             $('#loading').show();

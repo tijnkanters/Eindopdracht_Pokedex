@@ -45,13 +45,13 @@
         <div data-role="panel" id="menuPanel" data-theme="b">
             <h1>Menu</h1>
             <ul data-role="listview" data-theme="b">
-                <li><a href="#myPokemon" data-transition="slide"><span id="label_my_pokemon">My Pokémon</span></a></li>
-                <li><a href="#hunt" data-transition="slide" id="button_hunt"><span id="label_hunt">Hunt</span></a></li>
-                <li><a href="settings.html"><span id="label_settings">Settings</span></a></li>
+                <li><a href="#myPokemon"    data-transition="slide" id="button_myPokemon">              <span id="label_my_pokemon">My Pokémon</span></a></li>
+                <li><a href="#hunt"         data-transition="slide" id="button_hunt">                   <span id="label_hunt">Hunt</span></a></li>
+                <li><a href="settings.html">                                                            <span id="label_settings">Settings</span></a></li>
             </ul>
         </div>
         <div data-role="header" class="header" data-position="fixed">
-            <a href="#menuPanel" class="ui-btn ui-corner-all">Menu</a>
+            <a href="#" id="button_menu" class="ui-btn ui-corner-all">Menu</a>
             <h1>Pokédex</h1>
             <img src="img/button.png" class="button">
         </div>
@@ -86,14 +86,16 @@
             </ul>
         </div>
         <div data-role="header" class="header" data-position="fixed">
-            <a href="#menuPanel" class="ui-btn ui-corner-all">Menu</a>
+            <a href="#" id="button_menu" class="ui-btn ui-corner-all">Menu</a>
             <h1>My Pokémon</h1>
             <img src="img/button.png" class="button">
         </div>
         <div data-role="main" class="ui-content">
-            <ul data-role="listview" id="pokedexListView">
+            <ul data-role="listview" id="myPokemonListView">
             </ul>
-            <p> Pokelist hier </p>
+            <p id="empty">
+                <h1>No pokemons found</h1>
+            </p>
         </div>
     </div>
     

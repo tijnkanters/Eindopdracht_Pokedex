@@ -1,4 +1,4 @@
-$('#button_hunt').on('tap', function(){
+$('#button_hunt').on('tap', function() {
     myPlace = null;
     getLocation();
 });
@@ -9,7 +9,7 @@ var myPlace;
 // This method accepts a Position object, which contains the
 // current GPS coordinates
 //
-var onSuccess = function (position) {
+var onSuccess = function(position) {
     myPlace = { x: position.coords.latitude, y: position.coords.longitude };
     hunt();
 };
@@ -33,16 +33,16 @@ var cords = [
     { xt: 51.677419, yt: 5.319756, xb: 51.673370, yb: 5.327322, name: "Petelaarse Schans" },//Petelaarse Schans
     { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233, name: "Grass Company" },//Grass Company
     { xt: 51.633824, yt: 5.409716, xb: 51.632043, yb: 5.413037, name: "Lieseindse Straat" },//Lieseindse Straat
-    { xt: 51.611846, yt: 5.466126, xb: 51.611777, yb: 5.466339, name: "Duinweg"}//Duinweg
+    { xt: 51.611846, yt: 5.466126, xb: 51.611777, yb: 5.466339, name: "Duinweg" },//Duinweg
+    { xt: 51.969000, yt: 6.254900, xb: 51.966000, yb: 6.254600, name: "Test" }//test
 ];
 
 function getLocation() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);    
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
 function hunt() {
-    alert(myPlace.x + " - " + myPlace.y);
-    console.log(myPlace);
+
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
     for (var i = 0; i < cords.length; i++) {
@@ -51,15 +51,15 @@ function hunt() {
 
             var random = Math.floor(Math.random() * total_pokemons) + 1;
             var pokemon = pokelist[random];
-            pokemon.x=myPlace.x;
-            pokemon.y=myPlace.y;
-            pokemon.caughtAt=cords[i].name;
+            pokemon.x = myPlace.x;
+            pokemon.y = myPlace.y;
+            pokemon.caughtAt = cords[i].name;
             var myPokemon = localStorage.getArray("myPokemon");
-            if(!myPokemon){
-                myPokemon=[];
+            if (!myPokemon) {
+                myPokemon = [];
             }
             myPokemon.push(pokemon);
-            
+
             localStorage.setArray("myPokemon", myPokemon);
             alert("You caught a wild " + pokemon.name + " at " + cords[i].name + "!");//vervangen door iets gui
             found = true;
