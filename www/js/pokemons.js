@@ -37,12 +37,17 @@ $(document).on("pagehide", function(event) {
 
 $('#pokedexListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
 $('#myPokemonListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
-$('#deletePokemon').on('tap', deleteAll);
+
+$(document).on('tap', '#button_delete', function(){
+    deleteAll();
+});
 
 function deleteAll() {
-    var myPokemon = localStorage.getArray("myPokemon");
-    myPokemon = [];
-    localStorage.setArray("myPokemon", myPokemon);
+    localStorage.removeItem("myPokemon");
+    $('#myPokemonListView').empty();
+    $('#myPokemonListView').listview("refresh");
+    alert("Succesfully released all pokemons");
+    
 };
 
 $('#button_myPokemon').on('tap', function() {
@@ -139,7 +144,8 @@ function loadPokemonDetails(pokemon) {
         var pokemon;
 
         if (myPokemon != null) {
-
+            
+            debugger;
             var counter = 0;
             for (counter; counter < myPokemon.length; counter++) {
                 if (myPokemon[counter].id == data.id){

@@ -61,7 +61,7 @@ function hunt() {
             pokemon.x = myPlace.x;
             pokemon.y = myPlace.y;
             pokemon.caughtAt = cords[i].name;
-            pokemon.id = random;
+            pokemon.id = random + 1;
             
             var myPokemon = localStorage.getArray("myPokemon");
             if (!myPokemon) {
@@ -72,6 +72,7 @@ function hunt() {
             localStorage.setArray("myPokemon", myPokemon);
             alert("You caught a wild " + pokemon.name + " at " + cords[i].name + "!");//vervangen door iets gui
             found = true;
+            loadMyPokemon();
             break;
         }
     }

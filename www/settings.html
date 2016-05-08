@@ -42,16 +42,8 @@
 <body>
 
     <div data-role="page" id="settings" data-theme="a">
-        <div data-role="panel" id="menuPanel" data-theme="b">
-            <h1>Menu</h1>
-            <ul data-role="listview" data-theme="b">
-                <li><a href="#pokedex" data-transition="slide">Pokédex</a></li>
-                <li><a href="#pokemonDetail" data-transition="slide"><span id="label_my_pokemon">My Pokémon</span></a></li>
-                <li><a href="#hunt" data-transition="slide" id="button_hunt"><span id="label_hunt">Hunt</span></a></li>
-            </ul>
-        </div>
         <div data-role="header" class="header">
-            <a href="#" id="button_menu" class="ui-btn ui-corner-all">Menu</a>
+            <a href="#" id="button_back" class="ui-btn ui-corner-all">Back</a>
             <h1>Settings</h1>
             <img src="img/button.png" class="button">
         </div>
@@ -62,13 +54,13 @@
         <option value="on">1</option>
         <option value="off" selected>2</option>
       </select>
-            <a id="deletePokemon" class="ui-btn">Free all pokemon!(are you sure?)</a>
+            <a id="button_delete" class="ui-btn">Free all pokemon!(are you sure?)</a>
 
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/hunt.js"></script>
     <script type="text/javascript" src="js/pokemons.js"></script>
+    <script type="text/javascript" src="js/hunt.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
