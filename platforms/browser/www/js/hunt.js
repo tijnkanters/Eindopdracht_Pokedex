@@ -54,6 +54,8 @@ function hunt() {
             pokemon.x = myPlace.x;
             pokemon.y = myPlace.y;
             pokemon.caughtAt = cords[i].name;
+            pokemon.id = random;
+            
             var myPokemon = localStorage.getArray("myPokemon");
             if (!myPokemon) {
                 myPokemon = [];

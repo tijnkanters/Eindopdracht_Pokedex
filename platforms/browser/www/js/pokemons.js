@@ -105,7 +105,7 @@ function loadMyPokemon() {
     var myPokemon = localStorage.getArray("myPokemon");
 
     if (myPokemon != null) {
-        
+
         var counter = 0;
         for (counter; counter < myPokemon.length; counter++) {
             listContent += '<li><a href="#" class="pokemonListItem" rel="' + myPokemon[counter].url + '"> ' + capitalizeFirstLetter(myPokemon[counter].name) + ' (' + myPokemon[counter].caughtAt + ')' + '</a></li>';
@@ -117,7 +117,7 @@ function loadMyPokemon() {
 
 }
 
-function loadPokemonDetails() {
+function loadPokemonDetails(pokemon) {
 
     var url = $(this).attr('rel');
 
@@ -128,11 +128,22 @@ function loadPokemonDetails() {
         var pokemonId = formatPokemonId(data.id);
         var pokemonName = capitalizeFirstLetter(data.name);
 
+        var myPokemon = localStorage.getArray("myPokemon");
+        var pokemon;
+
+        if (myPokemon != null) {
+
+            var counter = 0;
+            for (counter; counter < myPokemon.length; counter++) {
+                if (myPokemon[counter].id == data.id){
+                    pokemon = myPokemon[counter];
+                    $('#location_container').html('<a href="geo:' + pokemon.x + ',' + pokemon.y + '">Check catch location</a>');
+                }
+            }
+        }
+
         $('#pokemon_name').html(pokemonName);
         $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
-        if(data.x != null){
-            $('#location_container').html('<a href="geo:' + data.x + ',' + data.y + '">Check catch location</a>');   
-        }
 
         var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
 
