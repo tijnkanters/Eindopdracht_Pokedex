@@ -126,6 +126,9 @@ function loadPokemonDetails() {
 
         $('#pokemon_name').html(pokemonName);
         $('#internet_container').html('<a href="#" onclick="window.open(\'http://www.pokemon.com/us/pokedex/' + pokemonName + '\', \'_system\');">Check on the internet</a>');
+        if(data.x != null){
+            $('#location_container').html('<a href="geo:' + data.x + ',' + data.y + '">Check catch location</a>');   
+        }
 
         var imageUrl = "http://pokeunlock.com/wp-content/uploads/2015/01/" + pokemonId + ".png";
 
