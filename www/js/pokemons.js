@@ -19,7 +19,7 @@ $(document).on('tap', '#button_menu', function() {
 $(document).on("swiperight", function() {
     console.log($.mobile.activePage);
     if ($.mobile.activePage.is("#pokemonDetail")) {
-        $.mobile.navigate("#pokedex", { transition: "fade" });
+        $.mobile.back();
     }
     else {
         $.mobile.activePage.find('#menuPanel').panel("open");
@@ -99,11 +99,8 @@ function capitalizeFirstLetter(string) {
 function loadMyPokemon() {
     var listContent = '';
     var myPokemon = localStorage.getArray("myPokemon");
-    
-    $('#empty').show();
 
     if (myPokemon != null) {
-        $('#empty').hide();
         
         var counter = 0;
         for (counter; counter < myPokemon.length; counter++) {
