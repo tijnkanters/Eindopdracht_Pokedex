@@ -67,6 +67,7 @@ function hunt() {
             myPokemon.push(pokemon);
 
             localStorage.setArray("myPokemon", myPokemon);
+            navigator.vibrate(1000);
             alert("You caught a wild " + pokemon.name + " at " + cords[i].name + "!");//vervangen door iets gui
             found = true;
             loadMyPokemon();
