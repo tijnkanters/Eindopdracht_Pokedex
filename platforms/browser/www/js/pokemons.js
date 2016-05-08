@@ -37,6 +37,13 @@ $(document).on("pagehide", function(event) {
 
 $('#pokedexListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
 $('#myPokemonListView').on('tap', 'li a.pokemonListItem', loadPokemonDetails);
+$('#deletePokemon').on('tap', deleteAll);
+
+function deleteAll() {
+    var myPokemon = localStorage.getArray("myPokemon");
+    myPokemon = [];
+    localStorage.setArray("myPokemon", myPokemon);
+};
 
 $('#button_myPokemon').on('tap', function() {
     loadMyPokemon();
