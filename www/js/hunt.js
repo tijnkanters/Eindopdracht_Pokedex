@@ -1,5 +1,8 @@
 $('#button_hunt').on('tap', function() {
-    myPlace = null;
+    getLocation();
+});
+
+$('#button_hunt2').on('tap', function() {
     getLocation();
 });
 
