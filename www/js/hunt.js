@@ -38,8 +38,6 @@ var cords = [
     { xt: 51.677419, yt: 5.319756, xb: 51.673370, yb: 5.327322, name: "Petelaarse Schans" },//Petelaarse Schans
     { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233, name: "Grass Company" },//Grass Company
     { xt: 51.633824, yt: 5.409716, xb: 51.632043, yb: 5.413037, name: "Lieseindse Straat" },//Lieseindse Straat
-    { xt: 51.613000, yt: 5.468000, xb: 51.610000, yb: 5.465000, name: "Duinweg" },//Duinweg
-    { xt: 51.969000, yt: 6.254900, xb: 51.966000, yb: 6.254600, name: "Test" }//test
 ];
 
 function getLocation() {
@@ -50,7 +48,7 @@ function hunt() {
     var found = false;
     //    { xt: 51.693486, yt: 5.296459, xb: 51.693116, yb: 5.297233 },//Grass Company
     for (var i = 0; i < cords.length; i++) {
-        if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y <= cords[i].yt && myPlace.y >= cords[i].yb) {
+        if (myPlace.x <= cords[i].xt && myPlace.x >= cords[i].xb && myPlace.y >= cords[i].yt && myPlace.y <= cords[i].yb) {
             //correct cordinates catch pokemon
             navigator.vibrate(1000);
             var random = Math.floor(Math.random() * total_pokemons) + 1;
