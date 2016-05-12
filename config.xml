@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="nl.avans.mbd1.2076741" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.tnt" version="1.0.0">
   <name>Eindopdracht_Pokedex</name>
   <description>The ultimate Pokédex!</description>
   <content src="index.html"/>
